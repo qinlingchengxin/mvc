@@ -4,8 +4,8 @@ import com.yx.model.Person;
 import com.yx.schedule.ProcessorImpl;
 import com.yx.service.PersonService;
 import com.yx.utils.AesTest;
-import com.yx.utils.Configuration;
 import com.yx.utils.GenResult;
+import com.yx.utils.PropertiesUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -139,15 +139,11 @@ public class PersonController {
         }
     }
 
-
-    @Resource
-    private Configuration configuration;
-
     @RequestMapping(value = "testProperty")
     @ResponseBody
     public Map<String, Object> testProperty() {
         try {
-            return GenResult.SUCCESS.genResult(configuration);
+            return GenResult.SUCCESS.genResult(PropertiesUtil.INSTANCE.getIntMap().get("age"));
         } catch (Exception e) {
             log.error(e, e);
             return GenResult.FAILED.genResult();
