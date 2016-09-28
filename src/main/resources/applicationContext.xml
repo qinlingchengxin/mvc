@@ -8,6 +8,7 @@
     <context:component-scan base-package="com.yx.service"/>
     <context:component-scan base-package="com.yx.dao"/>
     <context:component-scan base-package="com.yx.common"/>
+    <context:component-scan base-package="com.yx.utils"/>
 
     <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -15,7 +16,6 @@
         </property>
     </bean>
 
-    <bean id="configuration" class="com.yx.utils.Configuration"/>
     <!--数据源-->
     <import resource="applicationContext_db.xml"/>
 

@@ -139,11 +139,15 @@ public class PersonController {
         }
     }
 
+
+    @Resource
+    private Configuration configuration;
+
     @RequestMapping(value = "testProperty")
     @ResponseBody
     public Map<String, Object> testProperty() {
         try {
-            return GenResult.SUCCESS.genResult(Configuration.class.newInstance());
+            return GenResult.SUCCESS.genResult(configuration);
         } catch (Exception e) {
             log.error(e, e);
             return GenResult.FAILED.genResult();

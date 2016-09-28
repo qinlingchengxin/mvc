@@ -1,25 +1,27 @@
 package com.yx.utils;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * User: NMY
  * Date: 16-8-28
  */
+@Component
 public class Configuration {
 
     @Value("${driverClassName}")
-    public static String driverClassName;
+    private String driverClassName;
     @Value("${url}")
-    public static String url;
+    private String url;
     @Value("${username}")
-    public static String username;
+    private String username;
     @Value("${password}")
-    public static String password;
+    private String password;
     @Value("${maxActive}")
-    public static int maxActive;
+    private int maxActive;
     @Value("${maxIdle}")
-    public static int maxIdle;
+    private int maxIdle;
 
     public String getDriverClassName() {
         return driverClassName;

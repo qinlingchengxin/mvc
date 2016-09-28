@@ -19,17 +19,6 @@ public class EnhanceFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null && cookies.length > 0) {
-            for (Cookie cookie : cookies) {
-                String name = cookie.getName();
-                if ("JSESSIONID".equals(name)) {
-                    System.out.println("JSESSIONID=" + cookie.getValue());
-                }
-            }
-        }
-        System.out.println("---------------EnhanceFilter---------------");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
