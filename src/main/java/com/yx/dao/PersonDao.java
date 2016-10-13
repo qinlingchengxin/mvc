@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -50,5 +51,10 @@ public class PersonDao {
             tmp.put("name", new String((byte[]) tmp.get("name")));
         }
         return result;
+    }
+
+    public void addPerson() {
+        String sql = "INSERT INTO person (id, name, content) VALUES (?,?,?) ON DUPLICATE KEY UPDATE name = ?, content = ?";
+        jdbcTemplate.update(sql, 3, "hello", "hello", "hello", "hello");
     }
 }

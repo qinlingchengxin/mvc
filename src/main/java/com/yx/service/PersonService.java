@@ -35,4 +35,8 @@ public class PersonService {
     public List<Map<String, Object>> getByIdDBs(int id, String aesPassword) {
         return personDao.getByIdDBs(id, aesPassword);
     }
+
+    public void addPerson() {
+        personDao.addPerson();
+    }
 }

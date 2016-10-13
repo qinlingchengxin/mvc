@@ -191,4 +191,22 @@ public class PersonController {
             return GenResult.FAILED.genResult();
         }
     }
+
+    /**
+     * ON DUPLICATE KEY
+     *
+     * @return
+     */
+    @RequestMapping(value = "addPerson")
+    @ResponseBody
+    public Map<String, Object> addPerson() {
+        try {
+            personService.addPerson();
+            return GenResult.SUCCESS.genResult();
+        } catch (Exception e) {
+            log.error(e, e);
+            e.printStackTrace();
+            return GenResult.FAILED.genResult();
+        }
+    }
 }
