@@ -15,7 +15,7 @@ public class PersonDao {
     private JdbcTemplate jdbcTemplate;
 
     public List<Map<String, Object>> queryPersons() {
-        String sql = "SELECT * FROM person";
+        String sql = "SELECT s.id,s.name FROM student s,person p where s.tid = p.id and p.id = 4";
         return jdbcTemplate.queryForList(sql);
     }
 
@@ -56,5 +56,10 @@ public class PersonDao {
     public void addPerson() {
         String sql = "INSERT INTO person (id, name, content) VALUES (?,?,?) ON DUPLICATE KEY UPDATE name = ?, content = ?";
         jdbcTemplate.update(sql, 3, "hello", "hello", "hello", "hello");
+    }
+
+    public String queryAllStudent() {
+        String sql = "select students from person_copy where id = 4";
+        return jdbcTemplate.queryForObject(sql, String.class);
     }
 }

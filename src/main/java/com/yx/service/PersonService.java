@@ -1,6 +1,7 @@
 package com.yx.service;
 
 import com.yx.dao.PersonDao;
+import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -38,5 +39,13 @@ public class PersonService {
 
     public void addPerson() {
         personDao.addPerson();
+    }
+
+    public JSONArray queryAllStudent() {
+        long start = System.currentTimeMillis();
+        String students = personDao.queryAllStudent();
+        System.out.println(System.currentTimeMillis() -start);
+        JSONArray jsonArray = JSONArray.fromObject(students);
+        return jsonArray;
     }
 }

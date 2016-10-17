@@ -6,6 +6,7 @@ import com.yx.service.PersonService;
 import com.yx.utils.AesTest;
 import com.yx.utils.GenResult;
 import com.yx.utils.PropertiesUtil;
+import net.sf.json.JSONArray;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,9 @@ public class PersonController {
     @ResponseBody
     public Map<String, Object> queryAllPersons() {
         try {
+            long start = System.currentTimeMillis();
             List<Map<String, Object>> persons = personService.queryPersons();
+            System.out.println(System.currentTimeMillis() - start);
             if (persons.size() > 0) {
                 return GenResult.SUCCESS.genResult(persons);
             } else {
@@ -203,6 +206,24 @@ public class PersonController {
         try {
             personService.addPerson();
             return GenResult.SUCCESS.genResult();
+        } catch (Exception e) {
+            log.error(e, e);
+            e.printStackTrace();
+            return GenResult.FAILED.genResult();
+        }
+    }
+
+    /**
+     * ON DUPLICATE KEY
+     *
+     * @return
+     */
+    @RequestMapping(value = "queryAllStudent")
+    @ResponseBody
+    public Map<String, Object> queryAllStudent() {
+        try {
+            JSONArray students = personService.queryAllStudent();
+            return GenResult.SUCCESS.genResult(students);
         } catch (Exception e) {
             log.error(e, e);
             e.printStackTrace();
