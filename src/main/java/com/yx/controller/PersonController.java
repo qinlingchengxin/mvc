@@ -230,4 +230,21 @@ public class PersonController {
             return GenResult.FAILED.genResult();
         }
     }
+
+    /**
+     * common test
+     *
+     * @return
+     */
+    @RequestMapping(value = {"common", "com"})
+    @ResponseBody
+    public Map<String, Object> common() {
+        try {
+            return GenResult.SUCCESS.genResult();
+        } catch (Exception e) {
+            log.error(e, e);
+            e.printStackTrace();
+            return GenResult.FAILED.genResult();
+        }
+    }
 }
