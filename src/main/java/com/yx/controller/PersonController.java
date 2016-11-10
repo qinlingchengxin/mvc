@@ -1,7 +1,7 @@
 package com.yx.controller;
 
 import com.yx.model.Person;
-import com.yx.schedule.ProcessorImpl;
+import com.yx.schedule.ScheduleOperateService;
 import com.yx.service.PersonService;
 import com.yx.utils.AesTest;
 import com.yx.utils.GenResult;
@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -170,10 +171,8 @@ public class PersonController {
     @ResponseBody
     public Map<String, Object> testProcess() {
         try {
-            ProcessorImpl processor = ApplicationContextUtil.getBean("processor", ProcessorImpl.class);
-            processor.process();
-            processor = ApplicationContextUtil.getBean(ProcessorImpl.class);
-            processor.process();
+            ScheduleOperateService scheduleOperateService = ApplicationContextUtil.getBean("scheduleOperateService", ScheduleOperateService.class);
+            scheduleOperateService.abortOrder();
             return GenResult.SUCCESS.genResult();
         } catch (Exception e) {
             log.error(e, e);
@@ -241,6 +240,23 @@ public class PersonController {
     public Map<String, Object> common() {
         try {
             return GenResult.SUCCESS.genResult();
+        } catch (Exception e) {
+            log.error(e, e);
+            e.printStackTrace();
+            return GenResult.FAILED.genResult();
+        }
+    }
+
+    /**
+     * common test
+     *
+     * @return
+     */
+    @RequestMapping(value = "test")
+    @ResponseBody
+    public Map<String, Object> test(@RequestParam(required = true,defaultValue = "") String title) {
+        try {
+            return GenResult.SUCCESS.genResult(title);
         } catch (Exception e) {
             log.error(e, e);
             e.printStackTrace();
