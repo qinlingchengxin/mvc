@@ -1,5 +1,8 @@
 package com.yx.model;
 
+import org.msgpack.annotation.Message;
+
+@Message
 public class Person {
     private int id;
     private String name;

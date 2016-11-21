@@ -1,5 +1,6 @@
 package com.yx.dao;
 
+import com.yx.model.Person;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,9 +20,9 @@ public class PersonDao {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public void add(String name) {
+    public int add(String name) {
         String sql = "INSERT INTO person (name) VALUES (?)";
-        jdbcTemplate.update(sql, name);
+        return jdbcTemplate.update(sql, name);
     }
 
     public Map<String, Object> getById(int id) {
@@ -53,13 +54,18 @@ public class PersonDao {
         return result;
     }
 
-    public void addPerson() {
-        String sql = "INSERT INTO person (id, name, content) VALUES (?,?,?) ON DUPLICATE KEY UPDATE name = ?, content = ?";
-        jdbcTemplate.update(sql, 3, "hello", "hello", "hello", "hello");
+    public void addPerson(Person person) {
+        String sql = "INSERT INTO person (id, name, age) VALUES (?,?,?)";
+        jdbcTemplate.update(sql, person.getId(), person.getName(), person.getAge());
     }
 
     public String queryAllStudent() {
         String sql = "select students from person_copy where id = 4";
         return jdbcTemplate.queryForObject(sql, String.class);
+    }
+
+    public int editName(int id, String name) {
+        String sql = "update person set name = '" + name + "' where id = " + id;
+        return jdbcTemplate.update(sql);
     }
 }

@@ -7,6 +7,7 @@
 
     <context:component-scan base-package="com.yx.service"/>
     <context:component-scan base-package="com.yx.dao"/>
+    <context:component-scan base-package="com.yx.cacher"/>
     <context:component-scan base-package="com.yx.common"/>
     <context:component-scan base-package="com.yx.utils"/>
     <context:component-scan base-package="com.yx.schedule"/>
@@ -18,8 +19,11 @@
     </bean>
 
     <!--数据源-->
-    <import resource="applicationContext_db.xml"/>
+    <import resource="application-db.xml"/>
 
     <!--定时任务-->
-    <import resource="applicationContext-quartz.xml"/>
+    <import resource="application-quartz.xml"/>
+
+    <!--缓存-->
+    <import resource="application-redis.xml"/>
 </beans>

@@ -76,9 +76,7 @@ public class PersonController {
     @ResponseBody
     public Map<String, Object> getById(int id) {
         try {
-            Map<String, Object> record = personService.getById(id);
-            String name = AesTest.decrypt(record.get("name").toString());
-            record.put("name", name);
+            Person record = personService.getPersonById(id);
             return GenResult.SUCCESS.genResult(record);
         } catch (Exception e) {
             log.error(e, e);
@@ -201,9 +199,12 @@ public class PersonController {
      */
     @RequestMapping(value = "addPerson")
     @ResponseBody
-    public Map<String, Object> addPerson() {
+    public Map<String, Object> addPerson(Person person) {
         try {
-            personService.addPerson();
+            if (person == null){
+                return GenResult.PARAMS_ERROR.genResult();
+            }
+            personService.addPerson(person);
             return GenResult.SUCCESS.genResult();
         } catch (Exception e) {
             log.error(e, e);
@@ -257,6 +258,24 @@ public class PersonController {
     public Map<String, Object> test(@RequestParam(required = true,defaultValue = "") String title) {
         try {
             return GenResult.SUCCESS.genResult(title);
+        } catch (Exception e) {
+            log.error(e, e);
+            e.printStackTrace();
+            return GenResult.FAILED.genResult();
+        }
+    }
+
+    /**
+     * common test
+     *
+     * @return
+     */
+    @RequestMapping(value = "edit")
+    @ResponseBody
+    public Map<String, Object> edit(int id, String name) {
+        try {
+            int rows = personService.editName(id, name);
+            return GenResult.SUCCESS.genResult(rows);
         } catch (Exception e) {
             log.error(e, e);
             e.printStackTrace();
