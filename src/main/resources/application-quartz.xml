@@ -9,7 +9,7 @@
     <task:scheduled-tasks scheduler="qbScheduler">
 
         <!--秒、分、时、日、月、周--><!--每5秒-->
-        <task:scheduled ref="scheduleOperateService" method="changeBookTime" cron="* */5 * * * ?"/>
+        <task:scheduled ref="scheduleOperateService" method="changeBookTime" cron="0 */5 * * * ?"/>
 
     </task:scheduled-tasks>
 </beans>
