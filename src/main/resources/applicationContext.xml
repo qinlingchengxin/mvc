@@ -26,4 +26,11 @@
 
     <!--缓存-->
     <import resource="application-redis.xml"/>
+
+    <!-- 国际化 -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages/messages"/>
+    </bean>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
+    <!-- 国际化 -->
 </beans>

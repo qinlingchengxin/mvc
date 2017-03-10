@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.yx.controller"/>
 
@@ -36,20 +34,5 @@
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="1024000000"></property>
-    </bean>
-
-    <!--国际化-->
-    <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
-    <mvc:interceptors>
-        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
-    </mvc:interceptors>
-
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
-
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <!-- 国际化信息所在的文件名 -->
-        <property name="basename" value="messages/messages"/>
-        <!-- 如果在国际化资源文件中找不到对应代码的信息，就用这个代码作为名称  -->
-        <property name="useCodeAsDefaultMessage" value="true"/>
     </bean>
 </beans>
