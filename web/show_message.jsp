@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1><spring:message code="screen.welcome.welcome" arguments="Justin,Lin"/></h1>
+<spring:url value="http://www.baidu.com"/>
 </body>
 <body>
 </body>

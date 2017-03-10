@@ -5,7 +5,6 @@ import com.yx.schedule.ScheduleOperateService;
 import com.yx.service.PersonService;
 import com.yx.utils.AesTest;
 import com.yx.utils.GenResult;
-import com.yx.utils.PropertiesUtil;
 import net.sf.json.JSONArray;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
@@ -141,17 +140,6 @@ public class PersonController {
         }
     }
 
-    @RequestMapping(value = "testProperty")
-    @ResponseBody
-    public Map<String, Object> testProperty() {
-        try {
-            return GenResult.SUCCESS.genResult(PropertiesUtil.INSTANCE.getIntMap().get("age"));
-        } catch (Exception e) {
-            log.error(e, e);
-            return GenResult.FAILED.genResult();
-        }
-    }
-
     @RequestMapping(value = "copyBean")
     @ResponseBody
     public Map<String, Object> copyBean(HttpServletRequest request) {
@@ -201,7 +189,7 @@ public class PersonController {
     @ResponseBody
     public Map<String, Object> addPerson(Person person) {
         try {
-            if (person == null){
+            if (person == null) {
                 return GenResult.PARAMS_ERROR.genResult();
             }
             personService.addPerson(person);
@@ -255,7 +243,7 @@ public class PersonController {
      */
     @RequestMapping(value = "test")
     @ResponseBody
-    public Map<String, Object> test(@RequestParam(required = true,defaultValue = "") String title) {
+    public Map<String, Object> test(@RequestParam(required = true, defaultValue = "") String title) {
         try {
             return GenResult.SUCCESS.genResult(title);
         } catch (Exception e) {
