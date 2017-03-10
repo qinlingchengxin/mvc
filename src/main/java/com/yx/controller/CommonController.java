@@ -28,7 +28,7 @@ public class CommonController {
      */
     @RequestMapping(value = "doPost")
     public void doPost() throws IOException {
-        URL postUrl = new URL("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=9d6jc1Iuf6FpmktaAeMhHm-5h5uR55wzLc-WJWqfKxeAJLWInvGTP_pnxuPEhps53Go33s3g-n6TZfmwS-8_1gVRZtqclFvGEuWJpnjv7Zh4fkRGxNzJEOPQ6iYV3CNvYNNjAJAMBB");
+        URL postUrl = new URL("https://api.weixin.qq.com/cgi-bin/messages/template/send?access_token=9d6jc1Iuf6FpmktaAeMhHm-5h5uR55wzLc-WJWqfKxeAJLWInvGTP_pnxuPEhps53Go33s3g-n6TZfmwS-8_1gVRZtqclFvGEuWJpnjv7Zh4fkRGxNzJEOPQ6iYV3CNvYNNjAJAMBB");
         HttpURLConnection connection = (HttpURLConnection) postUrl.openConnection();
         connection.setDoOutput(true);
         connection.setDoInput(true);

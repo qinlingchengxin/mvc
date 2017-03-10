@@ -23,14 +23,14 @@ public enum GenResult {
     public Map<String, Object> genResult() {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("msgCode", msgCode);
-        map.put("message", message);
+        map.put("messages", message);
         return map;
     }
 
     public Map<String, Object> genResult(Object data) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("msgCode", msgCode);
-        map.put("message", message);
+        map.put("messages", message);
         map.put("data", data);
         return map;
     }
