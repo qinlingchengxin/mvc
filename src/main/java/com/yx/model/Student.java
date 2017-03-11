@@ -8,14 +8,20 @@ public class Student {
     private int id;
     private String name;
     private int age;
+    private String sex;
+    private String[] hobby;
+    private String desc;
+    private int health;
 
     public Student() {
     }
 
-    public Student(int id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public int getId() {
@@ -40,5 +46,29 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String[] getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String[] hobby) {
+        this.hobby = hobby;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }
