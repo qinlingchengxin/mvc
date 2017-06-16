@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>hashCode base64Code</title>
     <script type="text/javascript">
         hashCode = function (str) {
             var hash = 0;
